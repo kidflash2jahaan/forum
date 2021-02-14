@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% from "show_links.html" import show_links %}
+{% block title %}Register{% endblock %}
+  {% block body %}
+  <body>
+    <div class="header">Q&A</div>
+    {{ show_links(user) }}
+        <h1>Register</h1>
+        <hr style="background-color: #fff; width: 500px;"> 
+
+              <form action="/register" method="POST">
+                    <label>Name</label><br>
+                      <input type="text" placeholder="Name" name="name">
+                      <br><br>
+                    <label>Password</label><br>
+                      <input type="password" placeholder="Password" name="password"><br>
+                      {% if error %}
+                      <p style = "color: red; font-size: small;">{{error}}</p>
+                      {% endif %}
+                      <button type="submit" class="btn btn-primary">Register</button>
+              </form>
+  </body>
+</html>{% endblock %}

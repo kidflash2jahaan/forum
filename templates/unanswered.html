@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% from "show_links.html" import show_links %}
+{% block title %}Unanswered Questions{% endblock %}
+  {% block body %}
+  <body>
+    <div class="header">Q&A</div>
+    {{ show_links(user) }}
+        <h1>Questions For You</h1>
+        
+        <div class="container">
+          {% for question in questions %}
+            <a href="{{url_for("answer", question_id = question["id"])}}">
+              <h4>{{question["question_text"]}}</h4>
+              <p>Asked by: {{question["name_text"]}}</p>
+            </a>
+            <br>
+          {% endfor %}
+          </div><br>
+          
+  </body>
+</html>{% endblock %}

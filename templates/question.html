@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "show_links.html" import show_links %}
+{% block title %}Question Statistics{% endblock %}
+  {% block body %}
+  <body>
+    <div class="header">Q&A</div>
+    {{ show_links(user) }}
+        <h1>{{ question['question_text'] }}</h1>
+        <p>{{ question['answer_text'] }}</p>
+        <p><a>Asked By: {{ question['asker_name'] }}</a></p>
+        <p><a>Answered By: {{ question['expert_name'] }}</a></p>
+      </div>
+
+    </div> <!-- /container -->
+
+  </body>
+</html>{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% from "show_links.html" import show_links %}
+{% block title %}Users{% endblock %}
+  {% block body %}
+  <body>
+    <div class="header">Q&A</div>
+    {{ show_links(user) }}
+
+        <h1>Users</h1>
+        <h3>Click to promote to expert</h3>
+        <div class="container">
+          {% for user in users %}
+          {% if user["expert_boolean"] == 0 %}<a href="{{ url_for("promote", user_id=user["id"]) }}">
+            <h4>{{ user["name_text"] }}(Non Expert)</h4></a>
+          {% endif %}
+          {% if user["expert_boolean"] == 1 %}<a href="{{ url_for("demote", user_id=user["id"]) }}">
+            <h4>{{ user["name_text"] }}(Expert)</h4>
+          </a>
+          {% endif %}
+          <br>
+          {% endfor %}
+          </div><br>
+  </body>
+</html>
+{% endblock %}

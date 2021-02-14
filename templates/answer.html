@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% from "show_links.html" import show_links %}
+{% block title %}Answer Question{% endblock %}
+  {% block body %}
+  <body>
+    <div class="header">Q&A</div>
+    {{ show_links(user) }}
+    <!-- <nav> -->
+    <h1>{{ question['question_text'] }}</h1>
+    <hr style="background-color: #fff; width: 500px;"> 
+    <form action="{{url_for("answer", question_id=question["id"])}}" method="POST">
+      <label for="textArea">Answer</label>
+      <textarea class="textarea" placeholder="Type your answer." name="answer"></textarea><br>
+      <button type="submit" class="btn btn-primary" name="answer_text">Submit</button><br/>
+    </form>
+  </body>
+</html>
+{% endblock %}

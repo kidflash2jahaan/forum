@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% from "show_links.html" import show_links %}
+{% block title %}Forum{% endblock %}
+  {% block body %}
+  <body>
+         <div class="header">Q&A</div>
+         {{ show_links(user) }}
+        <h1>Answered Questions</h1>
+        <div class="container">
+          {% for q in question %}
+            <a href="{{url_for("question", question_id = q["question_id"])}}">
+              <h4>{{q["question_text"]}}</h4>
+              <p>Asked by: {{q["asker_name"]}}</p>
+              <p>Answered by: {{q["expert_name"]}}</p>
+            </a>
+            <br>
+            {% endfor %}
+          </div><br>
+  </body>
+</html>
+{% endblock %}
