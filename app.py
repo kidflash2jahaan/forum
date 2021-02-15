@@ -197,15 +197,19 @@ def demote(user_id):
     db.commit()
     return redirect(url_for("users"))
 
+    
+"""@app.route("/about_me")
+def me():
+    user = get_current_user()
+    db = get_db()
+    return render_template("about_me.html")"""
 
 @app.route("/logout")
 def logout():
     session.pop("user", None)
     return redirect(url_for("home"))
 
-@app.route("/about_me")
-def me():
-    return render_template("about_me.html")
+
 
 
 
