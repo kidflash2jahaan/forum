@@ -1,9 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for, session, g
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_session import Session
 from database import get_db
 import os
+
 app = Flask(__name__)
+app.config["SESSION_TYPE"] = 'memcached'
 app.config["SECRET_KEY"] = os.urandom(24)
+sess = Session()
 
 
 @app.teardown_appcontext
@@ -198,11 +202,11 @@ def demote(user_id):
     return redirect(url_for("users"))
 
     
-"""@app.route("/about_me")
+@app.route("/about_me")
 def me():
     user = get_current_user()
     db = get_db()
-    return render_template("about_me.html")"""
+    return render_template("about_me.html", user=user)
 
 @app.route("/logout")
 def logout():
