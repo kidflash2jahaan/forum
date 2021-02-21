@@ -203,7 +203,7 @@ def demote(user_id):
 
     
 @app.route("/about_me")
-def me():
+def about_me():
     user = get_current_user()
     db = get_db()
     return render_template("about_me.html", user=user)
