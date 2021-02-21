@@ -1,6 +1,7 @@
 {% macro show_links(user) %}
 <ul id="navbar">
     <li><a href="/">Home</a></li>
+    <li><a href="/about_me">About the Creator</a></li>
     {% if user and user["admin_boolean"] == 0 and user["expert_boolean"] == 0 %}
     <li><a href="/ask">Ask Question</a></li>
     {% endif %}
@@ -15,12 +16,12 @@
     <li><a href="/users">Users</a></li>
     {% endif %}
     {% if not user %}
-    <li><a href="/about_me">About the Creator</a></li>
+    <!-- <li><a href="/about_me">About the Creator</a></li> -->
     <li><a href="/login">Login</a></li>
     <li><a href="/register">Register</a></li>
     {% endif %}
     {% if user %}
-    <li><a href="/about_me">About the Creator</a></li>
+    <!-- <li><a href="/about_me">About the Creator</a></li> -->
     <li><a href="/logout">Logout</a></li>
     {% endif %}
 </ul>
