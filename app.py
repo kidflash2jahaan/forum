@@ -152,7 +152,7 @@ def answer(question_id):
     print("answer route1")
     if request.method == "POST":
         db.execute("update questions set answer_text = ? where id = ?", [
-                   request.form["answer_text"], question_id])
+                   request.form["answer"], question_id])
         db.commit()
         print("answer route2")
         return redirect(url_for("unanswered"))
