@@ -5,10 +5,10 @@ from database import get_db
 import os
 
 app = Flask(__name__)
-app.config["SESSION_TYPE"] = 'memcached'
+app.config["SESSION_TYPE"] = 'filesystem'
 app.config["SECRET_KEY"] = os.urandom(24)
 sess = Session()
-
+sess.init_app(app)
 
 @app.teardown_appcontext
 def close_db(error):
