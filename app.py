@@ -45,6 +45,47 @@ def home():
     questions_result = questions_cur.fetchall()
     return render_template("home.html", user=user, question=questions_result)
 
+@app.route("/encrypter")
+def encrypt():
+    return render_template("encrypt.html")
+
+@app.route("/encrypter/check/", methods=['GET', 'POST'])
+def encrypt_check():
+    message = request.form.get("message")
+    e_m = encrypt_message(message)
+
+    return render_template("encrypt.html", encrypted_message=e_m)
+
+def encrypt_message(message):
+    encrypted_message = ""
+    for i in message:
+        calc1 = ord(i)
+        calc2 = calc1 + 5
+        calc3 = chr(calc2)
+        encrypted_message = encrypted_message + calc3
+    return encrypted_message
+
+@app.route("/decrypter")
+def decrypt():
+    return render_template("decrypt.html")
+
+
+@app.route("/decrypter/check", methods=['GET', 'POST'])
+def decrypt_check():
+    message = request.form.get("message")
+    d_m = decrypt_message(message)
+
+    return render_template("decrypt.html", decrypted_message=d_m)
+
+
+def decrypt_message(message):
+    decrypted_message = ""
+    for i in message:
+        calc1 = ord(i)
+        calc2 = calc1 - 5
+        calc3 = chr(calc2)
+        decrypted_message = decrypted_message + calc3
+    return decrypted_message
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -212,9 +253,6 @@ def about_me():
 def logout():
     session.pop("user", None)
     return redirect(url_for("home"))
-
-
-
 
 
 if __name__ == "__main__":
